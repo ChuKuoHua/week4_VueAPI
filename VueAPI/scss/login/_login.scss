@@ -1,0 +1,41 @@
+.login-box{
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Microsoft JhengHei;
+  background-image: url('https://upload.cc/i1/2020/07/13/wxXldy.gif');
+  background-size: cover;
+}
+.login-group{
+  position: relative;
+  box-shadow: 0 1px 5px rgba(0,0,0,.6);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.5);
+  padding: 1.6em;
+  color: white;
+}
+.form-box{
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;  
+}
+.form-control{
+  background: rgba(255, 255, 255, 0.8);
+}
+.form-signin{
+  input{
+    &:focus,&:active{
+      outline:none;
+      box-shadow: 0 0 0 0;
+    }
+}
+button{
+    &:focus,&:active{
+      outline:none;
+      box-shadow: 0 0 0 0;
+    }
+  }
+}

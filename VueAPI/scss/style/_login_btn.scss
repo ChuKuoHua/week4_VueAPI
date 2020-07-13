@@ -1,0 +1,11 @@
+.login-btn{
+  padding: 5px;
+  margin-top: 1em; 
+  background: $login-off;
+  color: $white;
+  box-shadow: 0 1px 5px #211f1f61;
+  &:hover{
+    background: $login-On;
+    color: $white;
+  }
+}

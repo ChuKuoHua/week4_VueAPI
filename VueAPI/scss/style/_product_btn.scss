@@ -1,0 +1,74 @@
+$org: #e05d10;
+.btn-home{
+  font-size: 18px;
+  color: $white;
+  &:hover{    
+    color: $white;
+    text-decoration: underline;
+  }
+}
+.btn-signOut{
+  color: $white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  &:hover{    
+    color: $white;    
+    box-shadow: 0 0 10px inset #f1eded;
+  }
+  &:focus,&:active{
+    outline:none;
+    box-shadow: 0;
+  }
+}
+.btn-add{    
+  background-color: $btn-add;
+  letter-spacing: 1px;
+  color: $white;
+  font-family: $MJ;
+  &:hover{
+    background-color: #e07c42;
+    color: $white;
+  }
+}
+.btn-outline-primary {
+  color: $Cyan;
+  border-color: $Cyan;
+  &:hover{
+    color: $white;
+    background-color: $Cyan;
+    border-color: $Cyan;
+  }
+}
+.btn-outline-danger {
+  color: $org;
+  border-color: $org;
+  &:hover{
+    color: $white;
+    background-color: $org;
+    border-color: $org;
+  }
+}
+.btn-primary{
+  color: $white;
+  background-color: $Cyan;
+  border-color: $Cyan;
+  &:hover {
+  color: $white;
+  background-color: #318da9;
+  border-color: #318da9;
+  }
+}
+
+/*-- pages --*/
+.page-item.active{
+  .page-link{
+    background-color:  $org;
+    border-color:  $org;
+  }
+}
+.page-link{
+  color: $Cyan;
+  &:hover{
+    color: #16718c;
+  }
+}

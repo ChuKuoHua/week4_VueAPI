@@ -1,0 +1,55 @@
+.modal{
+  font-family: $MJ;
+  letter-spacing: 1px;
+}
+.modal-header-color{
+  background-color: $Cyan; 
+  
+}
+.hr-my{
+  margin-top: .6rem;
+  margin-bottom: 1.2rem;
+}
+.modal-title{
+  font-size: 1.25rem;
+}
+.form-check-label {
+  margin-top: 3px;
+}
+.del-mod-color{
+  box-shadow: 0 0 100px inset #c11212;
+}
+.btn-cancel{
+  font-weight: bold;
+  color: $btn-cancel;
+  font-weight: bold;
+  outline: 1px solid;
+  outline-offset: 0px;
+  text-shadow: none;
+  -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  &:hover{
+    color: $white;
+    background: #767779;
+    outline-color: $white;
+    outline-offset: 15px;
+  }
+}
+.btn-del{
+  color: $btn-del;
+  font-weight: bold;
+  outline: 1px solid;
+  outline-offset: 0px;
+  text-shadow: none;
+  -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1); 
+  &:hover{
+    color: $white;
+    background: $btn-del;
+    outline-color: $white;
+    outline-offset: 15px;
+  }
+  
+}
