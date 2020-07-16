@@ -79,7 +79,6 @@ Vue.component('productModal',{
         imageUrl:[],
       },
     };
-    
   },
   props:{
     productid:{
@@ -113,7 +112,7 @@ Vue.component('productModal',{
         this.tempProduct = res.data.data;
       }).catch((error)=>{
         console.log(error);
-      })
+      });
     },
     updateProduct(){
       // 新增產品
@@ -124,24 +123,25 @@ Vue.component('productModal',{
         api = `${apiPath}${this.user.uuid}/admin/ec/product/${this.tempProduct.id}`;
         httpMethod = 'patch';
       }
-      axios.defaults.headers.common.Authorization = `Bearer ${this.user.token}`;      
-      axios[httpMethod](api, this.tempProduct).then(() =>{
-        $('#productModal').modal('hide');
-        this.$emit('update');      
+      // 預設帶入 token
+      axios.defaults.headers.common.Authorization = `Bearer ${this.user.token}`;
+      axios[httpMethod](api, this.tempProduct)
+        .then(() =>{
+          this.$emit('update');      
           Swal.fire({
             toast: true,
-            title: '修改成功',
+            title: '更新成功',
             icon: 'success',
             showConfirmButton: false,
             timer: 2000,
             padding: '1em',
             position: 'top',
           });
-        }).catch((error)=>{
-          console.log(error);
+        }).catch((err)=>{
+          console.log(err);
           Swal.fire({
             toast: true,
-            title: '修改失敗',
+            title: '更新失敗',
             icon: 'error',
             showConfirmButton: false,
             timer: 2000,
@@ -149,9 +149,10 @@ Vue.component('productModal',{
             position: 'top',
           });
         });
+      $('#productModal').modal('hide');
     },
     // 上傳檔案
-    uploadFile(){      
+    uploadFile(){
       const uploadedFile = this.$refs.file.files[0];
       const formData = new FormData();
       formData.append('file', uploadedFile);
@@ -176,18 +177,28 @@ Vue.component('productModal',{
           });
         }
       }).catch(() =>{
-        console.log('上傳不可超過 2 MB');
         Swal.fire({
           toast: true,
-          title: '上傳不可超過 2 MB',
+          title: '上傳不可超過 2 MB 或檔案格式錯誤',
           icon: 'error',
           showConfirmButton: false,
           timer: 2000,
           padding: '1em',
           position: 'top',
         });
+        console.log('上傳不可超過 2 MB 或檔案格式錯誤');
         this.status.fileUploading = false;        
       });
+    },
+  },
+  // 利用 watch 判斷是否是新增產品，如果是就清空裡面的資料
+  watch:{
+    isNew(val){
+      if(val === true){
+        this.tempProduct={
+          imageUrl: [],
+        };
+      }
     },
   },
 });
@@ -217,20 +228,20 @@ new Vue({
   el: '#app',
   data(){
     return{
-      user:{
-        token: '',
-        uuid: 'c7010afc-c576-4a2b-9f0e-5a42977d6066',
+      products: [],
+      pagination: {},
+      tempProduct: {
+        imageUrl: [],
       },
-      products:[],
-      tempProduct:{
-        imageUrl:[],
-      },
-      pagination:{},
       isNew: false,
       status:{
         fileUploading: false,
       },
       isLoading: true,
+      user:{
+        token: '',
+        uuid: 'c7010afc-c576-4a2b-9f0e-5a42977d6066',
+      },
     };
   },
   created(){
@@ -246,7 +257,7 @@ new Vue({
   methods:{
     getProducts(page = 1){
       const api = `${apiPath}${this.user.uuid}/admin/ec/products?page=${page}`;
-      // 預設帶入 token      
+      // 預設帶入 token
       axios.defaults.headers.common.Authorization = `Bearer ${this.user.token}`;
       axios.get(api).then((res) =>{
         this.isLoading = false;
@@ -258,8 +269,8 @@ new Vue({
       });
     },
     // 開啟 Modal 視窗
-    openModal(isNew, item){
-      switch (isNew){
+    openModal(type, item){
+      switch (type){
         case 'new':
           this.tempProduct = {
             imageUrl: [],
@@ -268,14 +279,14 @@ new Vue({
           $('#productModal').modal('show');
           break;
         case 'edit':
-          this.tempProduct = Object.assign({}, item);
+          this.tempProduct = Object.assign({},item);
           // 使用 refs 觸發子元件方法
           this.$refs.productModel.getProduct(this.tempProduct.id);
           this.isNew = false;
           break;
         case 'delete':
-          $('#delProductModal').modal('show');
           this.tempProduct = Object.assign({},item);
+          $('#delProductModal').modal('show');
           break;
         default:
           break;
