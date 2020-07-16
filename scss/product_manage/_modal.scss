@@ -1,3 +1,12 @@
+@mixin btn-ami {
+  font-weight: bold;
+  outline: 1px solid;
+  outline-offset: 0px;
+  text-shadow: none;
+  -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
 .modal{
   font-family: $MJ;
   letter-spacing: 1px;
@@ -10,25 +19,72 @@
   margin-top: .6rem;
   margin-bottom: 1.2rem;
 }
+// 產品 Modal 頁面
+.modal-header{
+  border-bottom: 0px;
+}
 .modal-title{
   font-size: 1.25rem;
+  color: aliceblue;
+  letter-spacing: 5px;
+}
+.modal-label{
+  background: radial-gradient(#ead8d6 25%, #fff 0%);
+  text-align: center;
+  letter-spacing: 5px;
+  padding: 3px;
+  width: 100%;
+  border-radius: 3%;
 }
 .form-check-label {
   margin-top: 3px;
 }
+.form-input-border{
+  border: 0;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0%;
+  &:focus{
+    border-color: #3d3f41;
+  }
+}
+.d-shadow{
+  box-shadow: 0 0 5px inset;
+}
+.modal-footer-col{
+  background-image: linear-gradient(135deg, $Cyan 45%, #7b414100);
+  background-image: -webkit-linear-gradient(315deg, $Cyan 45%, #7b414100);
+  background-image: -o-linear-gradient(315deg, $Cyan 45%, #7b414100);
+}
+.modal-footer{
+  border-top: 0px;
+}
+.modal-btn{
+  font-weight: bold;
+  border: 1px solid;
+  &:hover{
+    color: $white;
+  }
+}
+.product-cancel{
+  color: #505458c2;;  
+  &:hover{
+    background: #505458c2;;
+  }
+}
+.product-certain{
+  color: $org;
+  &:hover{
+    background: $org;
+  }
+}
+
+// 刪除產品 btn
 .del-mod-color{
   box-shadow: 0 0 100px inset #c11212;
 }
 .btn-cancel{
-  font-weight: bold;
   color: $btn-cancel;
-  font-weight: bold;
-  outline: 1px solid;
-  outline-offset: 0px;
-  text-shadow: none;
-  -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-  -o-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  @include btn-ami;
   &:hover{
     color: $white;
     background: #767779;
@@ -38,13 +94,7 @@
 }
 .btn-del{
   color: $btn-del;
-  font-weight: bold;
-  outline: 1px solid;
-  outline-offset: 0px;
-  text-shadow: none;
-  -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-  -o-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1); 
+  @include btn-ami;
   &:hover{
     color: $white;
     background: $btn-del;

@@ -24,6 +24,10 @@
 }
 .form-control{
   background: rgba(255, 255, 255, 0.8);
+  &:focus,&:active{
+    box-shadow: 0 0 0 0;
+    border-color: #484f56;
+  }
 }
 .form-signin{
   input{
@@ -31,7 +35,7 @@
       outline:none;
       box-shadow: 0 0 0 0;
     }
-}
+  }
 button{
     &:focus,&:active{
       outline:none;

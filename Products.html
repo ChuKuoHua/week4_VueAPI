@@ -103,61 +103,61 @@
             <span aria-hidden="true"><i class="fas fa-times"></i></span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body d-shadow">
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4 border-right">
               <div v-for="i in 5" :key="i + 'img' " class="form-group">
-                <label :for="'img' + i" class="mb-1">輸入圖片網址</label>
-                <input type="text" class="form-control" :id="'img' + i" v-model="tempProduct.imageUrl[i - 1]"
+                <label :for="'img' + i" class="mb-1 modal-label">輸入圖片網址</label>
+                <input type="text" class="form-control form-input-border" :id="'img' + i" v-model="tempProduct.imageUrl[i - 1]"
                   placeholder="請輸入圖片連結">
               </div>
               <div class="form-group">
-                <label for="customFile">
-                  或 上傳圖片
+                <label for="customFile" class="modal-label">
+                  上傳圖片
                   <i v-if="status.fileUploading" class="fas fa-spinner fa-spin"></i>
                 </label>
-                <input type="file" id="customFile" ref="file" class="form-control" @change="uploadFile">
+                <input type="file" id="customFile" ref="file" class="form-control form-input-border" @change="uploadFile">
               </div>
               <img class="img-fluid" :src="tempProduct.imageUrl[0]" alt="">
             </div>
             <div class="col-sm-8">
               <div class="form-group">
-                <label for="title" class="mb-1">標題</label>
-                <input type="text" class="form-control" id="title" v-model="tempProduct.title"
+                <label for="title" class="mb-1 modal-label">標題</label>
+                <input type="text" class="form-control form-input-border" id="title" v-model="tempProduct.title"
                   placeholder="請輸入標題" required>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="category" class="mb-1">分類</label>
-                  <input type="text" class="form-control" id="category" v-model="tempProduct.category"
+                  <label for="category" class="mb-1 modal-label">分類</label>
+                  <input type="text" class="form-control form-input-border" id="category" v-model="tempProduct.category"
                     placeholder="請輸入分類" required>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="unit" class="mb-1">單位</label>
-                  <input type="unit" class="form-control" id="unit" v-model="tempProduct.unit"
+                  <label for="unit" class="mb-1 modal-label">單位</label>
+                  <input type="unit" class="form-control form-input-border" id="unit" v-model="tempProduct.unit"
                     placeholder="請輸入單位" required>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="origin_price" class="mb-1">原價</label>
-                  <input type="number" class="form-control" id="origin_price" v-model="tempProduct.origin_price"
+                  <label for="origin_price" class="mb-1 modal-label">原價</label>
+                  <input type="number" class="form-control form-input-border" id="origin_price" v-model="tempProduct.origin_price"
                     placeholder="請輸入原價">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="price" class="mb-1">售價</label>
-                  <input type="number" class="form-control" id="price" v-model="tempProduct.price"
+                  <label for="price" class="mb-1 modal-label">售價</label>
+                  <input type="number" class="form-control form-input-border" id="price" v-model="tempProduct.price"
                     placeholder="請輸入售價">
                 </div>
               </div>
               <hr class="hr-my">
               <div class="form-group">
-                <label for="description" class="mb-1">產品描述</label>
+                <label for="description" class="mb-1 modal-label">產品描述</label>
                 <textarea type="text" class="form-control" id="description" v-model="tempProduct.description"
                   placeholder="請輸入產品描述" required></textarea>
               </div>
               <div class="form-group">
-                <label for="content" class="mb-1">說明內容</label>
+                <label for="content" class="mb-1 modal-label">說明內容</label>
                 <textarea type="text" class="form-control" id="content" v-model="tempProduct.content"
                   placeholder="請輸入產品說明內容" required></textarea>
               </div>
@@ -173,9 +173,9 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" @click="updateProduct">確定</button>
+        <div class="modal-footer modal-footer-col">
+          <button type="button" class="btn modal-btn product-cancel" data-dismiss="modal">取消</button>
+          <button type="button" class="btn modal-btn product-certain" @click="updateProduct">確定</button>
         </div>
       </div>
     </div>
